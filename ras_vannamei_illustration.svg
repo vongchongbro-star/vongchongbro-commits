@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 1700 1100" width="1700" height="1100"
+     font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fbfdff"/>
+    <stop offset="1" stop-color="#eaf2fb"/>
+  </linearGradient>
+  <linearGradient id="tankWater" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#7cc7ed"/>
+    <stop offset="0.6" stop-color="#0ea5e9"/>
+    <stop offset="1" stop-color="#0c4a6e"/>
+  </linearGradient>
+  <linearGradient id="shrimpGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fdba74"/>
+    <stop offset="1" stop-color="#ea580c"/>
+  </linearGradient>
+  <linearGradient id="filterGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fef3c7"/>
+    <stop offset="1" stop-color="#fed7aa"/>
+  </linearGradient>
+  <linearGradient id="skimmerGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#dcfce7"/>
+    <stop offset="1" stop-color="#bbf7d0"/>
+  </linearGradient>
+  <linearGradient id="biofilterGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#dcfce7"/>
+    <stop offset="1" stop-color="#bbf7d0"/>
+  </linearGradient>
+  <linearGradient id="uvGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#f3e8ff"/>
+    <stop offset="1" stop-color="#e9d5ff"/>
+  </linearGradient>
+  <linearGradient id="o2Grad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#cffafe"/>
+    <stop offset="1" stop-color="#a5f3fc"/>
+  </linearGradient>
+  <linearGradient id="heatGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fed7aa"/>
+    <stop offset="1" stop-color="#fb923c"/>
+  </linearGradient>
+  <linearGradient id="sumpGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#dbe9f5"/>
+    <stop offset="1" stop-color="#bcdcef"/>
+  </linearGradient>
+  <radialGradient id="pumpGrad" cx="0.4" cy="0.4" r="0.7">
+    <stop offset="0" stop-color="#94a3b8"/>
+    <stop offset="1" stop-color="#475569"/>
+  </radialGradient>
+
+  <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="1.4"/>
+    <feOffset dx="0" dy="2" result="offsetblur"/>
+    <feFlood flood-color="#000" flood-opacity="0.15"/>
+    <feComposite in2="offsetblur" operator="in"/>
+    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+
+  <!-- Arrow markers -->
+  <marker id="arrBlue" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 Z" fill="#1f4e79"/>
+  </marker>
+  <marker id="arrGreen" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 Z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrGrey" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 Z" fill="#475569"/>
+  </marker>
+  <marker id="arrCyan" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 Z" fill="#0891b2"/>
+  </marker>
+  <marker id="arrPurple" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 Z" fill="#7e22ce"/>
+  </marker>
+</defs>
+
+<!-- Background -->
+<rect x="0" y="0" width="1700" height="1100" fill="url(#bgGrad)"/>
+<rect x="20" y="20" width="1660" height="1060" rx="6" ry="6"
+      fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+
+<!-- Title -->
+<text x="850.0" y="60" text-anchor="middle" font-size="26" font-weight="700"
+      fill="#1e293b">
+  Recirculatory Aquaculture System (RAS) for Pacific White Shrimp
+  (<tspan font-style="italic">Litopenaeus vannamei</tspan>)
+</text>
+<text x="850.0" y="86" text-anchor="middle" font-size="14" font-style="italic"
+      fill="#475569">
+  Complete schematic of water treatment components, recirculation loop,
+  nitrogen cycling, and water quality management
+</text>
+
+<!-- Outer dashed boundary: closed recirculation system -->
+<rect x="60" y="120" width="1580" height="780" rx="14" ry="14"
+      fill="none" stroke="#1f4e79" stroke-width="1.5"
+      stroke-dasharray="6,5" opacity="0.7"/>
+<text x="80" y="140" font-size="12" fill="#1f4e79" font-style="italic">
+  Closed Recirculation System  -  95-99% water reuse rate
+</text>
+
+<g filter="url(#softShadow)">
+  <!-- Tank container -->
+  <rect x="95" y="200" width="480" height="380"
+        rx="14" ry="14" fill="#bcdcef" stroke="#1f4e79" stroke-width="2.5"/>
+  <!-- Water gradient inside -->
+  <rect x="105" y="230" width="460" height="330"
+        rx="8" ry="8" fill="url(#tankWater)" opacity="0.85"/>
+  <!-- Water surface ripples -->
+  <path d="M 120 250 Q 215.0 245,
+           335.0 250 T 550 250"
+        fill="none" stroke="#ffffff" stroke-width="1.4" opacity="0.7"/>
+  <!-- Diffuser bubbles at the bottom -->
+  <line x1="125" y1="550" x2="545"
+        y2="550" stroke="#1e3a5f" stroke-width="3"
+        stroke-dasharray="2,4"/>
+</g>
+
+<circle cx="261.0097612299282" cy="538.9660330430199" r="4.7782706556394885" fill="#ffffff" opacity="0.65"/>
+<circle cx="155.42324040036794" cy="523.5647198277325" r="3.7799112091940494" fill="#ffffff" opacity="0.65"/>
+<circle cx="149.35954840537687" cy="524.7025706724232" r="2.631234804546947" fill="#ffffff" opacity="0.65"/>
+<circle cx="307.1311871382021" cy="542.2057830570152" r="2.817495546703528" fill="#ffffff" opacity="0.65"/>
+<circle cx="303.2980594398559" cy="511.92591501311847" r="2.9333068640237596" fill="#ffffff" opacity="0.65"/>
+<circle cx="218.76036513494608" cy="519.9026711037765" r="5.81698129859952" fill="#ffffff" opacity="0.65"/>
+<circle cx="367.3832384193495" cy="529.1327810139688" r="5.91689286957522" fill="#ffffff" opacity="0.65"/>
+<circle cx="144.56472585945764" cy="510.6612616380528" r="3.513632502160867" fill="#ffffff" opacity="0.65"/>
+<circle cx="185.58713501012375" cy="540.2883104768653" r="3.57968638435677" fill="#ffffff" opacity="0.65"/>
+<circle cx="467.7730708304132" cy="537.7709448030425" r="4.535600572818632" fill="#ffffff" opacity="0.65"/>
+<circle cx="393.3436569489973" cy="530.1040982909708" r="4.417105629983452" fill="#ffffff" opacity="0.65"/>
+<circle cx="151.37136948879572" cy="542.6159532013507" r="3.220855494867643" fill="#ffffff" opacity="0.65"/>
+<circle cx="410.7679887363501" cy="527.8963077732238" r="3.59951509631877" fill="#ffffff" opacity="0.65"/>
+<circle cx="370.9359826732083" cy="526.872624945169" r="3.5491844890228883" fill="#ffffff" opacity="0.65"/>
+<circle cx="458.63938223944626" cy="517.0402226508171" r="3.354337787527535" fill="#ffffff" opacity="0.65"/>
+<circle cx="366.25795830864183" cy="523.9921398475419" r="5.562981234507001" fill="#ffffff" opacity="0.65"/>
+<circle cx="431.3670215644714" cy="533.4824894043925" r="5.9306119662240375" fill="#ffffff" opacity="0.65"/>
+<circle cx="174.58762686708408" cy="528.2750871285909" r="5.149993253478373" fill="#ffffff" opacity="0.65"/>
+
+<rect x="105" y="205" width="460" height="28" rx="6" ry="6"
+      fill="#ffffff" stroke="#1f4e79" stroke-width="1"/>
+<text x="335.0" y="225" text-anchor="middle"
+      font-size="16" font-weight="700" fill="#1e3a5f">Shrimp Culture Tank</text>
+<text x="335.0" y="250" text-anchor="middle"
+      font-size="11" fill="#ffffff" font-style="italic" font-weight="600">
+  Litopenaeus vannamei
+</text>
+
+<g transform="translate(145 295) scale(0.75)">
+  <path d="M 8 50 L 28 42 Q 38 32, 60 28 Q 95 22, 118 30 L 122 28 Q 130 30, 140 33 Q 155 31, 168 34 Q 180 32, 190 36 Q 200 34, 208 39 Q 215 38, 222 44 Q 228 46, 234 52 L 252 56 L 270 60 L 274 64 L 268 68 L 250 64 Q 240 62, 232 64 Q 220 70, 205 70 Q 188 72, 168 70 Q 145 70, 122 67 Q 100 65, 80 62 Q 55 58, 35 56 Q 18 54, 8 50 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.4"/>
+  <path d="M 8 50 L 0 47 L 4 44 L 8 45 L 12 42 L 15 43 L 18 41 L 21 42 L 25 40 L 28 42 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.4"/>
+  <path d="M 252 56 Q 268 50, 278 54 Q 272 60, 270 64 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.3"/><path d="M 252 64 Q 268 70, 278 68 Q 272 64, 270 60 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.3"/><path d="M 62 60 L 59.0 72.0 L 60 80" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 75 62 L 74.5 75.0 L 78 84" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 88 63 L 88.0 76.5 L 92 86" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 100 64 L 101.0 77.0 L 106 86" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 115 65 L 115.5 76.5 L 120 84" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 138 67 Q 139 75, 141 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 138 67 Q 137 75, 135 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 156 67 Q 157 75, 159 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 156 67 Q 155 75, 153 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 174 67 Q 175 75, 177 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 174 67 Q 173 75, 171 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 192 67 Q 193 75, 195 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 192 67 Q 191 75, 189 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 210 67 Q 211 75, 213 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 210 67 Q 209 75, 207 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 130 32 Q 132.0 46.5, 134 65" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 148 32 Q 150.0 47.5, 152 67" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 168 33 Q 170.0 48.5, 172 68" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 188 35 Q 190.0 49.5, 192 68" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 208 38 Q 210.0 50.0, 212 66" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 228 45 Q 229.0 52.5, 230 64" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/>
+  <path d="M 28 44 C 60 20, 130 8, 235 12" fill="none" stroke="#1e4d72" stroke-width="1.1" stroke-linecap="round"/><path d="M 26 47 C 35 40, 55 38, 80 44" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 22 51 C 15 56, 8 62, 0 66" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="32" y1="46" x2="40" y2="38" stroke="#1e293b" stroke-width="2"/>
+  <circle cx="40" cy="36" r="4.5" fill="#1e293b"/>
+  <circle cx="38.5" cy="34.5" r="1.5" fill="#ffffff" opacity="0.85"/>
+</g>
+<g transform="translate(593.0 350) scale(-0.85 0.85)">
+  <path d="M 8 50 L 28 42 Q 38 32, 60 28 Q 95 22, 118 30 L 122 28 Q 130 30, 140 33 Q 155 31, 168 34 Q 180 32, 190 36 Q 200 34, 208 39 Q 215 38, 222 44 Q 228 46, 234 52 L 252 56 L 270 60 L 274 64 L 268 68 L 250 64 Q 240 62, 232 64 Q 220 70, 205 70 Q 188 72, 168 70 Q 145 70, 122 67 Q 100 65, 80 62 Q 55 58, 35 56 Q 18 54, 8 50 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.4"/>
+  <path d="M 8 50 L 0 47 L 4 44 L 8 45 L 12 42 L 15 43 L 18 41 L 21 42 L 25 40 L 28 42 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.4"/>
+  <path d="M 252 56 Q 268 50, 278 54 Q 272 60, 270 64 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.3"/><path d="M 252 64 Q 268 70, 278 68 Q 272 64, 270 60 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.3"/><path d="M 62 60 L 59.0 72.0 L 60 80" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 75 62 L 74.5 75.0 L 78 84" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 88 63 L 88.0 76.5 L 92 86" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 100 64 L 101.0 77.0 L 106 86" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 115 65 L 115.5 76.5 L 120 84" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 138 67 Q 139 75, 141 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 138 67 Q 137 75, 135 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 156 67 Q 157 75, 159 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 156 67 Q 155 75, 153 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 174 67 Q 175 75, 177 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 174 67 Q 173 75, 171 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 192 67 Q 193 75, 195 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 192 67 Q 191 75, 189 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 210 67 Q 211 75, 213 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 210 67 Q 209 75, 207 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 130 32 Q 132.0 46.5, 134 65" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 148 32 Q 150.0 47.5, 152 67" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 168 33 Q 170.0 48.5, 172 68" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 188 35 Q 190.0 49.5, 192 68" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 208 38 Q 210.0 50.0, 212 66" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 228 45 Q 229.0 52.5, 230 64" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/>
+  <path d="M 28 44 C 60 20, 130 8, 235 12" fill="none" stroke="#1e4d72" stroke-width="1.1" stroke-linecap="round"/><path d="M 26 47 C 35 40, 55 38, 80 44" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 22 51 C 15 56, 8 62, 0 66" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="32" y1="46" x2="40" y2="38" stroke="#1e293b" stroke-width="2"/>
+  <circle cx="40" cy="36" r="4.5" fill="#1e293b"/>
+  <circle cx="38.5" cy="34.5" r="1.5" fill="#ffffff" opacity="0.85"/>
+</g>
+<g transform="translate(185 425) scale(0.7)">
+  <path d="M 8 50 L 28 42 Q 38 32, 60 28 Q 95 22, 118 30 L 122 28 Q 130 30, 140 33 Q 155 31, 168 34 Q 180 32, 190 36 Q 200 34, 208 39 Q 215 38, 222 44 Q 228 46, 234 52 L 252 56 L 270 60 L 274 64 L 268 68 L 250 64 Q 240 62, 232 64 Q 220 70, 205 70 Q 188 72, 168 70 Q 145 70, 122 67 Q 100 65, 80 62 Q 55 58, 35 56 Q 18 54, 8 50 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.4"/>
+  <path d="M 8 50 L 0 47 L 4 44 L 8 45 L 12 42 L 15 43 L 18 41 L 21 42 L 25 40 L 28 42 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.4"/>
+  <path d="M 252 56 Q 268 50, 278 54 Q 272 60, 270 64 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.3"/><path d="M 252 64 Q 268 70, 278 68 Q 272 64, 270 60 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.3"/><path d="M 62 60 L 59.0 72.0 L 60 80" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 75 62 L 74.5 75.0 L 78 84" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 88 63 L 88.0 76.5 L 92 86" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 100 64 L 101.0 77.0 L 106 86" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 115 65 L 115.5 76.5 L 120 84" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 138 67 Q 139 75, 141 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 138 67 Q 137 75, 135 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 156 67 Q 157 75, 159 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 156 67 Q 155 75, 153 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 174 67 Q 175 75, 177 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 174 67 Q 173 75, 171 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 192 67 Q 193 75, 195 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 192 67 Q 191 75, 189 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 210 67 Q 211 75, 213 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 210 67 Q 209 75, 207 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 130 32 Q 132.0 46.5, 134 65" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 148 32 Q 150.0 47.5, 152 67" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 168 33 Q 170.0 48.5, 172 68" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 188 35 Q 190.0 49.5, 192 68" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 208 38 Q 210.0 50.0, 212 66" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 228 45 Q 229.0 52.5, 230 64" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/>
+  <path d="M 28 44 C 60 20, 130 8, 235 12" fill="none" stroke="#1e4d72" stroke-width="1.1" stroke-linecap="round"/><path d="M 26 47 C 35 40, 55 38, 80 44" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 22 51 C 15 56, 8 62, 0 66" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="32" y1="46" x2="40" y2="38" stroke="#1e293b" stroke-width="2"/>
+  <circle cx="40" cy="36" r="4.5" fill="#1e293b"/>
+  <circle cx="38.5" cy="34.5" r="1.5" fill="#ffffff" opacity="0.85"/>
+</g>
+<g transform="translate(375 460) scale(0.75)">
+  <path d="M 8 50 L 28 42 Q 38 32, 60 28 Q 95 22, 118 30 L 122 28 Q 130 30, 140 33 Q 155 31, 168 34 Q 180 32, 190 36 Q 200 34, 208 39 Q 215 38, 222 44 Q 228 46, 234 52 L 252 56 L 270 60 L 274 64 L 268 68 L 250 64 Q 240 62, 232 64 Q 220 70, 205 70 Q 188 72, 168 70 Q 145 70, 122 67 Q 100 65, 80 62 Q 55 58, 35 56 Q 18 54, 8 50 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.4"/>
+  <path d="M 8 50 L 0 47 L 4 44 L 8 45 L 12 42 L 15 43 L 18 41 L 21 42 L 25 40 L 28 42 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.4"/>
+  <path d="M 252 56 Q 268 50, 278 54 Q 272 60, 270 64 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.3"/><path d="M 252 64 Q 268 70, 278 68 Q 272 64, 270 60 Z" fill="url(#shrimpGrad)" stroke="#1e4d72" stroke-width="1.3"/><path d="M 62 60 L 59.0 72.0 L 60 80" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 75 62 L 74.5 75.0 L 78 84" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 88 63 L 88.0 76.5 L 92 86" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 100 64 L 101.0 77.0 L 106 86" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 115 65 L 115.5 76.5 L 120 84" fill="none" stroke="#1e4d72" stroke-width="1.0" stroke-linecap="round"/><path d="M 138 67 Q 139 75, 141 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 138 67 Q 137 75, 135 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 156 67 Q 157 75, 159 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 156 67 Q 155 75, 153 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 174 67 Q 175 75, 177 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 174 67 Q 173 75, 171 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 192 67 Q 193 75, 195 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 192 67 Q 191 75, 189 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 210 67 Q 211 75, 213 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 210 67 Q 209 75, 207 82" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 130 32 Q 132.0 46.5, 134 65" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 148 32 Q 150.0 47.5, 152 67" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 168 33 Q 170.0 48.5, 172 68" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 188 35 Q 190.0 49.5, 192 68" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 208 38 Q 210.0 50.0, 212 66" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/><path d="M 228 45 Q 229.0 52.5, 230 64" fill="none" stroke="#1e4d72" stroke-width="0.9" opacity="0.6"/>
+  <path d="M 28 44 C 60 20, 130 8, 235 12" fill="none" stroke="#1e4d72" stroke-width="1.1" stroke-linecap="round"/><path d="M 26 47 C 35 40, 55 38, 80 44" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/><path d="M 22 51 C 15 56, 8 62, 0 66" fill="none" stroke="#1e4d72" stroke-width="0.9" stroke-linecap="round"/>
+  <line x1="32" y1="46" x2="40" y2="38" stroke="#1e293b" stroke-width="2"/>
+  <circle cx="40" cy="36" r="4.5" fill="#1e293b"/>
+  <circle cx="38.5" cy="34.5" r="1.5" fill="#ffffff" opacity="0.85"/>
+</g>
+
+<g filter="url(#softShadow)">
+  <rect x="110" y="285" width="180" height="120" rx="8" ry="8"
+        fill="#ffffff" stroke="#1f4e79" stroke-width="1.2" opacity="0.95"/>
+  <rect x="110" y="285" width="180" height="22" rx="8" ry="8"
+        fill="#1f4e79"/>
+  <text x="200" y="301" text-anchor="middle" font-size="12"
+        font-weight="700" fill="#ffffff">System Parameters</text>
+  <g font-size="10.5" fill="#1e293b">
+    <text x="120" y="325">- Density: 150-300 ind/m^3</text>
+    <text x="120" y="343">- Tank vol: 10-200 m^3</text>
+    <text x="120" y="361">- Type: Raceway/Circular</text>
+    <text x="120" y="379">- FCR: 1.4-1.8</text>
+    <text x="120" y="397">- Survival: 80-95%</text>
+  </g>
+</g>
+
+<circle cx="117" cy="222" r="14" fill="#1f4e79" stroke="#ffffff" stroke-width="2"/><text x="117" y="227" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">1</text>
+
+<g>
+  <rect x="245.0" y="150" width="180" height="36"
+        rx="6" ry="6" fill="#ffffff" stroke="#1f4e79" stroke-width="1.2"
+        stroke-dasharray="3,3"/>
+  <text x="335.0" y="168" text-anchor="middle"
+        font-size="12" font-weight="700" fill="#1f4e79">Make-up Water</text>
+  <text x="335.0" y="182" text-anchor="middle"
+        font-size="9.5" fill="#475569">Seawater/freshwater  -  ~2-5% daily exchange</text>
+  <line x1="335.0" y1="186" x2="335.0"
+        y2="205" stroke="#1f4e79" stroke-width="2"
+        stroke-dasharray="4,3" marker-end="url(#arrBlue)"/>
+</g>
+
+
+<g filter="url(#softShadow)">
+  <!-- Drum filter housing -->
+  <rect x="620" y="230" width="220" height="140"
+        rx="10" ry="10" fill="url(#filterGrad)" stroke="#d97706" stroke-width="2"/>
+  <!-- Title -->
+  <text x="730.0" y="222" text-anchor="middle"
+        font-size="14" font-weight="700" fill="#1e3a5f">Drum Filter</text>
+  <!-- Rotating drum (cylinder representation) -->
+  <ellipse cx="730.0" cy="300.0" rx="80" ry="42"
+           fill="#ffffff" stroke="#d97706" stroke-width="2"/>
+  <!-- Mesh pattern -->
+  <g stroke="#d97706" stroke-width="0.7" opacity="0.65">
+<line x1="660.0" y1="265.0" x2="660.0" y2="335.0"/><line x1="670.0" y1="265.0" x2="670.0" y2="335.0"/><line x1="680.0" y1="265.0" x2="680.0" y2="335.0"/><line x1="690.0" y1="265.0" x2="690.0" y2="335.0"/><line x1="700.0" y1="265.0" x2="700.0" y2="335.0"/><line x1="710.0" y1="265.0" x2="710.0" y2="335.0"/><line x1="720.0" y1="265.0" x2="720.0" y2="335.0"/><line x1="730.0" y1="265.0" x2="730.0" y2="335.0"/><line x1="740.0" y1="265.0" x2="740.0" y2="335.0"/><line x1="750.0" y1="265.0" x2="750.0" y2="335.0"/><line x1="760.0" y1="265.0" x2="760.0" y2="335.0"/><line x1="770.0" y1="265.0" x2="770.0" y2="335.0"/><line x1="780.0" y1="265.0" x2="780.0" y2="335.0"/><line x1="790.0" y1="265.0" x2="790.0" y2="335.0"/><line x1="800.0" y1="265.0" x2="800.0" y2="335.0"/><line x1="652.0" y1="270.0" x2="808.0" y2="270.0"/><line x1="652.0" y1="278.0" x2="808.0" y2="278.0"/><line x1="652.0" y1="286.0" x2="808.0" y2="286.0"/><line x1="652.0" y1="294.0" x2="808.0" y2="294.0"/><line x1="652.0" y1="302.0" x2="808.0" y2="302.0"/><line x1="652.0" y1="310.0" x2="808.0" y2="310.0"/><line x1="652.0" y1="318.0" x2="808.0" y2="318.0"/><line x1="652.0" y1="326.0" x2="808.0" y2="326.0"/>
+  </g>
+  <!-- Rotation arrow -->
+  <path d="M 812.0 282.0 A 12 12 0 0 1 812.0 310.0"
+        fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrCyan)"/>
+  <text x="730.0" y="388" text-anchor="middle"
+        font-size="9" fill="#475569" font-style="italic">
+    Mesh: 40-100 um  |  TSS removal &gt;80%
+  </text>
+</g>
+
+<circle cx="640" cy="250" r="15" fill="#d97706" stroke="#ffffff" stroke-width="2"/><text x="640" y="255" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">2</text>
+
+<g>
+  <line x1="840" y1="300.0"
+        x2="890" y2="300.0"
+        stroke="#475569" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrGrey)"/>
+  <rect x="890" y="285.0" width="20" height="30"
+        fill="#94a3b8" stroke="#1e293b" stroke-width="1"/>
+  <text x="900" y="345.0" text-anchor="middle"
+        font-size="10" fill="#1e293b" font-style="italic">Sludge out</text>
+</g>
+
+
+<line x1="580" y1="390.0"
+      x2="615" y2="300.0"
+      stroke="#1f4e79" stroke-width="3" marker-end="url(#arrBlue)"/>
+<text x="597.5" y="337.0"
+      text-anchor="middle" font-size="10" fill="#1e3a5f" font-style="italic"
+      font-weight="600">Effluent</text>
+
+
+<g filter="url(#softShadow)">
+  <rect x="630" y="410" width="200" height="180" rx="8" ry="8"
+        fill="url(#skimmerGrad)" stroke="#16a34a" stroke-width="2"/>
+  <text x="730.0" y="402" text-anchor="middle"
+        font-size="14" font-weight="700" fill="#1e3a5f">Protein Skimmer</text>
+  <!-- Foam column -->
+  <rect x="660" y="450" width="100" height="100"
+        fill="#ffffff" stroke="#16a34a" stroke-width="1.2"/>
+  <!-- Foam bubbles at top -->
+  <rect x="660" y="450" width="100" height="20"
+        fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+  <text x="710" y="464" text-anchor="middle" font-size="9"
+        font-weight="700" fill="#16a34a">Foam</text>
+  <!-- Air bubbles -->
+<circle cx="682.1587627728404" cy="504.2274170333064" r="2.117621771142313" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="723.4572685227516" cy="523.519960634897" r="3.719077820832152" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="740.038224946471" cy="491.96232589936676" r="4.085886098820978" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="717.5495901684014" cy="510.59266429977447" r="3.368615993904239" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="737.1974224410033" cy="536.1276766575556" r="3.4222950122589335" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="723.132176437974" cy="474.2468599318054" r="4.104476063913271" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="721.7703083622135" cy="539.5167157626644" r="4.465774359829145" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="692.767642567532" cy="497.00540097126975" r="4.0059581476525645" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="671.8050342444471" cy="502.3186700409836" r="2.5041451367196337" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="679.3676635585385" cy="474.12680935319173" r="4.304698965417562" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="680.3472177614948" cy="487.333038358784" r="3.172849109399681" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="739.713757930104" cy="475.6406910840097" r="3.347562202847993" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="713.955192731523" cy="531.8368678509058" r="4.457839513507224" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="739.1187575758812" cy="489.4894745159728" r="3.245889551635096" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="698.70169322653" cy="531.8934979038752" r="4.873193611891974" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="682.0736724632887" cy="482.33524099432594" r="2.6958706004586075" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="688.6668866944689" cy="503.94739112389493" r="3.767370511196767" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="691.019729543883" cy="470.2865522369545" r="3.256839503375984" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="699.540285831578" cy="509.64388565944745" r="4.859293776575286" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/><circle cx="725.2394925708783" cy="506.0844003149545" r="3.852778248227383" fill="#ffffff" opacity="0.85" stroke="#16a34a" stroke-width="0.4"/>
+  <!-- Air inlet at bottom (cone) -->
+  <polygon points="780,540 800,525 800,555"
+           fill="#94a3b8" stroke="#1e293b" stroke-width="1"/>
+  <text x="808" y="525" font-size="9" fill="#1e293b">Air inlet</text>
+  <!-- DOC label -->
+  <rect x="765" y="455" width="55" height="15" rx="3" ry="3"
+        fill="#16a34a"/>
+  <text x="792" y="466" text-anchor="middle" font-size="9"
+        font-weight="700" fill="#ffffff">DOC</text>
+</g>
+
+<circle cx="650" cy="430" r="15" fill="#16a34a" stroke="#ffffff" stroke-width="2"/><text x="650" y="435" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">3</text>
+
+<line x1="730.0" y1="375"
+      x2="730.0" y2="405"
+      stroke="#1f4e79" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+
+
+<line x1="830" y1="460" x2="910" y2="460"
+      stroke="#16a34a" stroke-width="2" stroke-dasharray="5,3"
+      marker-end="url(#arrGreen)"/>
+<text x="875" y="454" text-anchor="middle" font-size="10"
+      fill="#16a34a" font-style="italic" font-weight="600">DOC removal</text>
+
+
+<g filter="url(#softShadow)">
+  <rect x="880" y="200" width="280" height="180" rx="8" ry="8"
+        fill="#1e293b" stroke="#1e3a5f" stroke-width="1.5"/>
+  <text x="1020" y="222" text-anchor="middle" font-size="14"
+        font-weight="700" fill="#ffffff">Online Monitoring</text>
+  <line x1="890" y1="230" x2="1150" y2="230"
+        stroke="#94a3b8" stroke-width="1"/>
+  <g font-size="11" fill="#ffffff">
+    <text x="895" y="250">- pH sensor (target: 7.5-8.5)</text>
+    <text x="895" y="270">- DO probe (target: &gt;=5 mg/L)</text>
+    <text x="895" y="290">- Temperature (28-30 C)</text>
+    <text x="895" y="310">- Salinity / EC meter (15-25 ppt)</text>
+    <text x="895" y="330">- TAN / NO2- analyser</text>
+    <text x="895" y="350">- CO2 sensor (target &lt;15 mg/L)</text>
+    <text x="895" y="370">- Turbidity / TSS sensor</text>
+  </g>
+</g>
+
+
+<g filter="url(#softShadow)">
+  <rect x="1180" y="200" width="260" height="180" rx="8" ry="8"
+        fill="#1f4e79" stroke="#1e3a5f" stroke-width="1.5"/>
+  <text x="1310" y="222" text-anchor="middle" font-size="14"
+        font-weight="700" fill="#ffffff">SCADA / Control System</text>
+  <line x1="1190" y1="230" x2="1430" y2="230"
+        stroke="#bcdcef" stroke-width="1"/>
+  <g font-size="11" fill="#ffffff">
+    <text x="1195" y="252">- PLC-based automation</text>
+    <text x="1195" y="274">- Real-time data logging</text>
+    <text x="1195" y="296">- Alarm management system</text>
+    <text x="1195" y="318">- Automated pH / alkalinity dosing</text>
+    <text x="1195" y="340">- Feed management control</text>
+    <text x="1195" y="362">- Remote access &amp; reporting</text>
+  </g>
+</g>
+
+
+<line x1="880" y1="290" x2="845" y2="300.0"
+      stroke="#475569" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.6"/>
+
+
+<g filter="url(#softShadow)">
+  <rect x="600" y="640" width="280" height="130"
+        rx="10" ry="10" fill="url(#sumpGrad)" stroke="#1f4e79" stroke-width="2"/>
+  <text x="740.0" y="632" text-anchor="middle"
+        font-size="14" font-weight="700" fill="#1e3a5f">Sump Tank</text>
+  <!-- Water inside -->
+  <rect x="615" y="685" width="250" height="70"
+        rx="4" ry="4" fill="url(#tankWater)" opacity="0.55"/>
+  <!-- Buffer reservoir label -->
+  <text x="740.0" y="670" text-anchor="middle"
+        font-size="11" fill="#1e3a5f" font-weight="600">Buffer reservoir</text>
+  <text x="740.0" y="722" text-anchor="middle"
+        font-size="11" fill="#1e3a5f" font-weight="700">Vol: 20-30% system vol.</text>
+  <text x="740.0" y="742" text-anchor="middle"
+        font-size="10" fill="#1e3a5f" font-style="italic">NaOH / Na2CO3 dosing</text>
+  <text x="740.0" y="785" text-anchor="middle"
+        font-size="9" fill="#475569" font-style="italic">Water level control</text>
+</g>
+
+<circle cx="620" cy="660" r="15" fill="#1f4e79" stroke="#ffffff" stroke-width="2"/><text x="620" y="665" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">4</text>
+
+<line x1="730.0" y1="595" x2="720.0" y2="635"
+      stroke="#1f4e79" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+<text x="700.0" y="615" font-size="9"
+      fill="#1e3a5f" font-style="italic">Foam fractionation</text>
+<text x="700.0" y="628" font-size="9"
+      fill="#1e3a5f" font-style="italic">DOC removed</text>
+
+
+<g filter="url(#softShadow)">
+  <circle cx="920" cy="700" r="35" fill="url(#pumpGrad)"
+          stroke="#1e293b" stroke-width="2"/>
+  <!-- Impeller blades -->
+  <g fill="#ffffff" stroke="#1e293b" stroke-width="1.5">
+    <path d="M 920 700 L 898 688 A 25 25 0 0 1 905 678 Z"/>
+    <path d="M 920 700 L 932 678 A 25 25 0 0 1 942 688 Z"/>
+    <path d="M 920 700 L 942 712 A 25 25 0 0 1 935 722 Z"/>
+    <path d="M 920 700 L 908 722 A 25 25 0 0 1 898 712 Z"/>
+  </g>
+  <circle cx="920" cy="700" r="6" fill="#1e293b"/>
+  <text x="920" y="755" text-anchor="middle"
+        font-size="13" font-weight="700" fill="#1e3a5f">Water Pump</text>
+  <text x="920" y="770" text-anchor="middle"
+        font-size="9" fill="#475569">Flow: 5-20 L/min/m^3</text>
+</g>
+
+<circle cx="942" cy="670" r="15" fill="#1e293b" stroke="#ffffff" stroke-width="2"/><text x="942" y="675" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">5</text>
+
+<line x1="885" y1="705.0" x2="883" y2="700"
+      stroke="#1f4e79" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+
+
+<g filter="url(#softShadow)">
+  <rect x="1000" y="760" width="460" height="160" rx="10" ry="10"
+        fill="url(#biofilterGrad)" stroke="#16a34a" stroke-width="2"/>
+  <text x="1230.0" y="752" text-anchor="middle"
+        font-size="14" font-weight="700" fill="#1e3a5f">Biofilter (MBBR)</text>
+  <!-- K1 media circles -->
+<circle cx="1030" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1030" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1052" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1052" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1074" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1074" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1096" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1096" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1118" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1118" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1140" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1140" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1162" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1162" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1184" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1184" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1206" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1206" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1228" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1228" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1250" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1250" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1272" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1272" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1294" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1294" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1316" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1316" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1338" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1338" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1360" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1360" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1382" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1382" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1404" cy="800" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1404" cy="800" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1030" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1030" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1052" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1052" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1074" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1074" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1096" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1096" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1118" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1118" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1140" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1140" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1162" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1162" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1184" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1184" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1206" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1206" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1228" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1228" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1250" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1250" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1272" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1272" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1294" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1294" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1316" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1316" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1338" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1338" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1360" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1360" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1382" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1382" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/><circle cx="1404" cy="830" r="9" fill="#bbf7d0" stroke="#16a34a" stroke-width="1"/><circle cx="1404" cy="830" r="4" fill="#dcfce7" stroke="#16a34a" stroke-width="0.6"/>
+  <!-- Process annotation -->
+  <text x="1230.0" y="885" text-anchor="middle" font-size="10"
+        fill="#16a34a" font-style="italic" font-weight="600">
+    NH4+ -&gt; NO2- (Nitrosomonas) -&gt; NO3- (Nitrobacter)
+  </text>
+  <text x="1230.0" y="903" text-anchor="middle" font-size="9"
+        fill="#1e293b">SSA 500 m^2/m^3  |  HRT 15-30 min  |  DO 5-7 mg/L</text>
+  <!-- K1 Media badge -->
+  <rect x="1360" y="790" width="85" height="40" rx="5" ry="5"
+        fill="#ffffff" stroke="#16a34a" stroke-width="1"/>
+  <text x="1403" y="807" text-anchor="middle" font-size="11"
+        font-weight="700" fill="#16a34a">K1 Media</text>
+  <text x="1403" y="822" text-anchor="middle" font-size="9"
+        fill="#1e293b">500 m^2/m^3 SSA</text>
+</g>
+
+<circle cx="1020" cy="780" r="15" fill="#16a34a" stroke="#ffffff" stroke-width="2"/><text x="1020" y="785" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">6</text>
+
+<line x1="957" y1="715" x2="995" y2="840.0"
+      stroke="#1f4e79" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+
+
+<text x="1100" y="938" font-size="9" fill="#16a34a"
+      font-style="italic">Aeration</text>
+<line x1="1140" y1="935" x2="1140" y2="925"
+      stroke="#16a34a" stroke-width="1.4" stroke-dasharray="3,2"
+      marker-end="url(#arrGreen)"/>
+<text x="1260" y="938" font-size="9" fill="#16a34a"
+      font-style="italic">Aeration</text>
+<line x1="1300" y1="935" x2="1300" y2="925"
+      stroke="#16a34a" stroke-width="1.4" stroke-dasharray="3,2"
+      marker-end="url(#arrGreen)"/>
+
+
+<g filter="url(#softShadow)">
+  <rect x="800" y="770" width="180" height="150" rx="8" ry="8"
+        fill="#f3e8ff" stroke="#7e22ce" stroke-width="2"/>
+  <text x="890.0" y="762" text-anchor="middle"
+        font-size="13" font-weight="700" fill="#1e3a5f">CO2 Stripper</text>
+  <!-- Cross-hatch packed media -->
+  <g stroke="#7e22ce" stroke-width="1" opacity="0.7">
+<line x1="820" y1="800" x2="790" y2="900"/><line x1="835" y1="800" x2="805" y2="900"/><line x1="850" y1="800" x2="820" y2="900"/><line x1="865" y1="800" x2="835" y2="900"/><line x1="880" y1="800" x2="850" y2="900"/><line x1="895" y1="800" x2="865" y2="900"/><line x1="910" y1="800" x2="880" y2="900"/><line x1="925" y1="800" x2="895" y2="900"/><line x1="940" y1="800" x2="910" y2="900"/><line x1="955" y1="800" x2="925" y2="900"/><line x1="970" y1="800" x2="940" y2="900"/><line x1="985" y1="800" x2="955" y2="900"/><line x1="1000" y1="800" x2="970" y2="900"/><line x1="820" y1="800" x2="850" y2="900"/><line x1="835" y1="800" x2="865" y2="900"/><line x1="850" y1="800" x2="880" y2="900"/><line x1="865" y1="800" x2="895" y2="900"/><line x1="880" y1="800" x2="910" y2="900"/><line x1="895" y1="800" x2="925" y2="900"/><line x1="910" y1="800" x2="940" y2="900"/><line x1="925" y1="800" x2="955" y2="900"/><line x1="940" y1="800" x2="970" y2="900"/><line x1="955" y1="800" x2="985" y2="900"/><line x1="970" y1="800" x2="1000" y2="900"/><line x1="985" y1="800" x2="1015" y2="900"/><line x1="1000" y1="800" x2="1030" y2="900"/>
+  </g>
+  <text x="890.0" y="938" text-anchor="middle"
+        font-size="9" fill="#475569" font-style="italic">Packed tower degassing</text>
+  <text x="890.0" y="950" text-anchor="middle"
+        font-size="9" fill="#475569" font-style="italic">Target CO2 &lt; 15 mg/L</text>
+  <!-- Air blower -->
+  <rect x="870.0" y="908" width="40" height="16"
+        rx="3" ry="3" fill="#94a3b8" stroke="#1e293b" stroke-width="1"/>
+  <text x="890.0" y="919" text-anchor="middle"
+        font-size="9" fill="#ffffff" font-weight="700">Air blower</text>
+</g>
+
+<circle cx="820" cy="790" r="15" fill="#7e22ce" stroke="#ffffff" stroke-width="2"/><text x="820" y="795" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">7</text>
+
+<line x1="890.0" y1="766" x2="890.0" y2="740"
+      stroke="#7e22ce" stroke-width="1.8" stroke-dasharray="4,3"
+      marker-end="url(#arrPurple)"/>
+<text x="900.0" y="748" font-size="11" fill="#7e22ce"
+      font-weight="700">CO2 ↑</text>
+
+
+<line x1="995" y1="840.0" x2="985" y2="845.0"
+      stroke="#1f4e79" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+
+
+<g filter="url(#softShadow)">
+  <rect x="590" y="800" width="190" height="80" rx="40" ry="40"
+        fill="url(#uvGrad)" stroke="#7e22ce" stroke-width="2"/>
+  <text x="685.0" y="792" text-anchor="middle"
+        font-size="13" font-weight="700" fill="#1e3a5f">UV Sterilizer</text>
+  <!-- UV lamp tube inside -->
+  <rect x="610" y="832.0" width="150" height="16"
+        rx="8" ry="8" fill="#7e22ce" opacity="0.85"/>
+  <!-- glow -->
+  <rect x="610" y="828.0" width="150" height="24"
+        rx="12" ry="12" fill="none" stroke="#7e22ce" stroke-width="1"
+        stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="685.0" y="844.0" text-anchor="middle"
+        font-size="11" font-weight="700" fill="#ffffff">UV-C  -  254 nm</text>
+  <text x="685.0" y="895" text-anchor="middle"
+        font-size="9" fill="#475569" font-style="italic">Pathogen inactivation</text>
+  <text x="685.0" y="907" text-anchor="middle"
+        font-size="9" fill="#475569" font-style="italic">Dose: &gt;=30 mJ/cm^2</text>
+</g>
+
+<circle cx="608" cy="796" r="15" fill="#7e22ce" stroke="#ffffff" stroke-width="2"/><text x="608" y="801" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">8</text>
+
+<line x1="795" y1="845.0" x2="785" y2="840.0"
+      stroke="#1f4e79" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+
+
+<g filter="url(#softShadow)">
+  <rect x="410" y="770" width="160" height="130" rx="8" ry="8"
+        fill="url(#o2Grad)" stroke="#0891b2" stroke-width="2"/>
+  <text x="490.0" y="762" text-anchor="middle"
+        font-size="13" font-weight="700" fill="#1e3a5f">O2 Injection</text>
+  <!-- Cone -->
+  <polygon points="440,800 540,800
+                   490.0,875"
+           fill="#bcdcef" stroke="#0891b2" stroke-width="1.5"/>
+  <!-- Bubbles inside cone -->
+<circle cx="500.5720049469701" cy="822.1597157289516" r="4.248832525144881" fill="#ffffff" stroke="#0891b2" stroke-width="0.5" opacity="0.85"/><circle cx="506.7981694423644" cy="854.9805273653791" r="3.994682802991415" fill="#ffffff" stroke="#0891b2" stroke-width="0.5" opacity="0.85"/><circle cx="483.5427344134761" cy="835.9591532928109" r="2.258842734275811" fill="#ffffff" stroke="#0891b2" stroke-width="0.5" opacity="0.85"/><circle cx="498.05737394114254" cy="822.4899128647475" r="2.168369039607562" fill="#ffffff" stroke="#0891b2" stroke-width="0.5" opacity="0.85"/><circle cx="472.5257911267699" cy="826.4921275108838" r="2.8501341305808587" fill="#ffffff" stroke="#0891b2" stroke-width="0.5" opacity="0.85"/><circle cx="463.154536233416" cy="820.0093312760542" r="2.37816233069857" fill="#ffffff" stroke="#0891b2" stroke-width="0.5" opacity="0.85"/><circle cx="466.0878620813558" cy="834.5443968813828" r="2.0637522166653643" fill="#ffffff" stroke="#0891b2" stroke-width="0.5" opacity="0.85"/><circle cx="512.4599426424292" cy="844.5627595115392" r="2.3713762133272285" fill="#ffffff" stroke="#0891b2" stroke-width="0.5" opacity="0.85"/><circle cx="475.1354653934246" cy="833.8955818421481" r="2.9104085988207062" fill="#ffffff" stroke="#0891b2" stroke-width="0.5" opacity="0.85"/><circle cx="467.3705338457317" cy="853.9574770593846" r="4.4827568042617845" fill="#ffffff" stroke="#0891b2" stroke-width="0.5" opacity="0.85"/>
+  <text x="490.0" y="892" text-anchor="middle"
+        font-size="11" fill="#0891b2" font-weight="700">O2</text>
+  <text x="490.0" y="915" text-anchor="middle"
+        font-size="9" fill="#475569" font-style="italic">Oxygenation cone</text>
+  <text x="490.0" y="927" text-anchor="middle"
+        font-size="9" fill="#475569" font-style="italic">DO target: &gt;=6 mg/L</text>
+  <!-- PSA / LOX label -->
+  <rect x="380" y="820" width="50" height="22" rx="3" ry="3"
+        fill="#bcdcef" stroke="#0891b2" stroke-width="1"/>
+  <text x="405" y="835" text-anchor="middle" font-size="9"
+        fill="#1e3a5f" font-weight="700">PSA / LOX</text>
+  <line x1="430" y1="831" x2="448" y2="831"
+        stroke="#0891b2" stroke-width="1.5" marker-end="url(#arrCyan)"/>
+</g>
+
+<circle cx="428" cy="766" r="15" fill="#0891b2" stroke="#ffffff" stroke-width="2"/><text x="428" y="771" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">9</text>
+
+<line x1="585" y1="840.0" x2="575" y2="835.0"
+      stroke="#1f4e79" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+
+
+<g filter="url(#softShadow)">
+  <rect x="175" y="720" width="200" height="150" rx="8" ry="8"
+        fill="url(#heatGrad)" stroke="#ea580c" stroke-width="2"/>
+  <text x="275.0" y="712" text-anchor="middle"
+        font-size="13" font-weight="700" fill="#1e3a5f">Heat Exchanger</text>
+  <!-- Zigzag heat coil -->
+  <path d="M 200 770 L 225 770 L 225 790
+           L 265 790 L 265 770
+           L 305 770 L 305 790
+           L 345 790 L 345 770
+           L 360 770"
+        fill="none" stroke="#dc2626" stroke-width="3" stroke-linejoin="round"
+        stroke-linecap="round"/>
+  <!-- Temperature label -->
+  <rect x="235.0" y="815" width="80" height="22" rx="4" ry="4"
+        fill="#ffffff" stroke="#ea580c" stroke-width="1.2"/>
+  <text x="275.0" y="830" text-anchor="middle" font-size="11"
+        font-weight="700" fill="#ea580c">28 - 30 C</text>
+  <!-- Heat in/out labels -->
+  <text x="200" y="758" font-size="9" fill="#dc2626"
+        font-weight="600">Heat in/out</text>
+  <text x="275.0" y="885" text-anchor="middle"
+        font-size="9" fill="#475569" font-style="italic">Temperature control</text>
+  <text x="275.0" y="897" text-anchor="middle"
+        font-size="9" fill="#475569" font-style="italic">Heating / cooling unit</text>
+</g>
+
+<circle cx="193" cy="716" r="15" fill="#ea580c" stroke="#ffffff" stroke-width="2"/><text x="193" y="721" text-anchor="middle" font-size="14" font-weight="800" fill="#ffffff">10</text>
+
+<line x1="405" y1="835.0" x2="380" y2="795.0"
+      stroke="#1f4e79" stroke-width="2.5" marker-end="url(#arrBlue)"/>
+
+
+<g>
+  <path d="M 275.0 715
+           L 275.0 610
+           L 65 610
+           L 65 390.0
+           L 90 390.0"
+        fill="none" stroke="#1f4e79" stroke-width="3"
+        marker-end="url(#arrBlue)" stroke-linejoin="round"/>
+  <text x="160" y="600" font-size="10" fill="#1e3a5f"
+        font-weight="700" font-style="italic">Treated return flow</text>
+  <text x="70" y="380.0" font-size="10" fill="#1e3a5f"
+        font-weight="700" font-style="italic">Return</text>
+</g>
+
+
+<g filter="url(#softShadow)">
+  <rect x="80" y="940" width="500" height="140" rx="6" ry="6"
+        fill="#ffffff" stroke="#1f4e79" stroke-width="1.5"/>
+  <rect x="80" y="940" width="500" height="26" rx="6" ry="6"
+        fill="#1f4e79"/>
+  <text x="330" y="958" text-anchor="middle" font-size="13"
+        font-weight="700" fill="#ffffff">Water Quality Parameters  -  L. vannamei RAS</text>
+  <!-- Headers -->
+  <g font-size="11" font-weight="700" fill="#1e3a5f">
+    <text x="95" y="985">Parameter</text>
+    <text x="300" y="985" text-anchor="middle">Optimal Range</text>
+    <text x="475" y="985" text-anchor="middle">Critical Limit</text>
+  </g>
+  <line x1="90" y1="990" x2="570" y2="990"
+        stroke="#94a3b8" stroke-width="1"/>
+  <g font-size="10.5" fill="#1e293b">
+    <text x="95" y="1005">Temperature</text>
+    <text x="300" y="1005" text-anchor="middle">28 - 30 C</text>
+    <text x="475" y="1005" text-anchor="middle" fill="#dc2626">&lt;22 or &gt;33 C</text>
+
+    <text x="95" y="1020">Salinity</text>
+    <text x="300" y="1020" text-anchor="middle">15 - 25 ppt</text>
+    <text x="475" y="1020" text-anchor="middle" fill="#dc2626">&lt;5 or &gt;40 ppt</text>
+
+    <text x="95" y="1035">Dissolved Oxygen (DO)</text>
+    <text x="300" y="1035" text-anchor="middle">5 - 7 mg/L</text>
+    <text x="475" y="1035" text-anchor="middle" fill="#dc2626">&lt;3 mg/L</text>
+
+    <text x="95" y="1050">pH</text>
+    <text x="300" y="1050" text-anchor="middle">7.5 - 8.5</text>
+    <text x="475" y="1050" text-anchor="middle" fill="#dc2626">&lt;7.0 or &gt;9.0</text>
+
+    <text x="95" y="1065">TAN (NH3 + NH4+)</text>
+    <text x="300" y="1065" text-anchor="middle">&lt;1 mg/L</text>
+    <text x="475" y="1065" text-anchor="middle" fill="#dc2626">&gt;2 mg/L</text>
+  </g>
+</g>
+
+
+<g filter="url(#softShadow)">
+  <rect x="600" y="940" width="430" height="140" rx="6" ry="6"
+        fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+  <rect x="600" y="940" width="430" height="26" rx="6" ry="6"
+        fill="#16a34a"/>
+  <text x="815" y="958" text-anchor="middle" font-size="13"
+        font-weight="700" fill="#ffffff">Nitrogen Cycle in RAS</text>
+
+  <!-- TAN box -->
+  <rect x="620" y="985" width="100" height="60" rx="6" ry="6"
+        fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="670" y="1008" text-anchor="middle" font-size="13"
+        font-weight="700" fill="#d97706">TAN</text>
+  <text x="670" y="1025" text-anchor="middle" font-size="10"
+        fill="#1e293b">NH3/NH4+</text>
+
+  <!-- Arrow 1 -->
+  <line x1="725" y1="1015" x2="755" y2="1015"
+        stroke="#16a34a" stroke-width="2" marker-end="url(#arrGreen)"/>
+  <text x="740" y="1008" text-anchor="middle" font-size="9"
+        fill="#16a34a" font-style="italic">Nitrosomonas</text>
+
+  <!-- NO2 box -->
+  <rect x="760" y="985" width="100" height="60" rx="6" ry="6"
+        fill="#bbf7d0" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="810" y="1008" text-anchor="middle" font-size="13"
+        font-weight="700" fill="#16a34a">NO2-</text>
+  <text x="810" y="1025" text-anchor="middle" font-size="10"
+        fill="#1e293b">Nitrite</text>
+
+  <!-- Arrow 2 -->
+  <line x1="865" y1="1015" x2="895" y2="1015"
+        stroke="#16a34a" stroke-width="2" marker-end="url(#arrGreen)"/>
+  <text x="880" y="1008" text-anchor="middle" font-size="9"
+        fill="#16a34a" font-style="italic">Nitrobacter</text>
+
+  <!-- NO3 box -->
+  <rect x="900" y="985" width="110" height="60" rx="6" ry="6"
+        fill="#bcdcef" stroke="#1f4e79" stroke-width="1.5"/>
+  <text x="955" y="1008" text-anchor="middle" font-size="13"
+        font-weight="700" fill="#1f4e79">NO3-</text>
+  <text x="955" y="1025" text-anchor="middle" font-size="10"
+        fill="#1e293b">Nitrate</text>
+
+  <!-- Source/sink labels -->
+  <text x="670" y="1058" text-anchor="middle" font-size="9"
+        fill="#475569" font-style="italic">Shrimp excretion</text>
+  <text x="670" y="1070" text-anchor="middle" font-size="9"
+        fill="#475569" font-style="italic">Feed decomposition</text>
+  <text x="955" y="1058" text-anchor="middle" font-size="9"
+        fill="#475569" font-style="italic">Water exchange</text>
+  <text x="955" y="1070" text-anchor="middle" font-size="9"
+        fill="#475569" font-style="italic">Denitrification</text>
+</g>
+
+
+<g filter="url(#softShadow)">
+  <rect x="1050" y="940" width="570" height="140" rx="6" ry="6"
+        fill="#ffffff" stroke="#1e3a5f" stroke-width="1.5"/>
+  <rect x="1050" y="940" width="570" height="26" rx="6" ry="6"
+        fill="#1e3a5f"/>
+  <text x="1335" y="958" text-anchor="middle" font-size="13"
+        font-weight="700" fill="#ffffff">System Legend</text>
+
+  <!-- Two columns: Water Flow Lines / KPIs -->
+  <text x="1065" y="985" font-size="11" font-weight="700"
+        fill="#1e3a5f">Water Flow Lines:</text>
+  <line x1="1065" y1="1000" x2="1105" y2="1000"
+        stroke="#1f4e79" stroke-width="3" marker-end="url(#arrBlue)"/>
+  <text x="1112" y="1004" font-size="10" fill="#1e293b">Recirculated treated water</text>
+  <line x1="1065" y1="1018" x2="1105" y2="1018"
+        stroke="#475569" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrGrey)"/>
+  <text x="1112" y="1022" font-size="10" fill="#1e293b">Sludge / waste discharge</text>
+  <line x1="1065" y1="1036" x2="1105" y2="1036"
+        stroke="#16a34a" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrGreen)"/>
+  <text x="1112" y="1040" font-size="10" fill="#1e293b">DOC / organics removal</text>
+  <line x1="1065" y1="1054" x2="1105" y2="1054"
+        stroke="#1f4e79" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="1112" y="1058" font-size="10" fill="#1e293b">Make-up water (supplemental)</text>
+  <line x1="1065" y1="1072" x2="1105" y2="1072"
+        stroke="#7e22ce" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="1112" y="1076" font-size="10" fill="#1e293b">Gas release (CO2 / O2)</text>
+
+  <!-- Right column - KPIs -->
+  <text x="1350" y="985" font-size="11" font-weight="700"
+        fill="#1e3a5f">Key Performance Indices:</text>
+  <g font-size="10" fill="#1e293b">
+    <text x="1350" y="1002">Water reuse rate: 95-99%</text>
+    <text x="1350" y="1018">Survival rate: 80-95%</text>
+    <text x="1350" y="1034">FCR: 1.4-1.8</text>
+    <text x="1350" y="1050">Biosecurity: Very high (closed)</text>
+    <text x="1350" y="1066">Production: Year-round</text>
+  </g>
+</g>
+
+</svg>
