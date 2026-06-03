@@ -13,6 +13,7 @@ Author: Generated with Kiro AI
 
 import math
 import os
+import sys
 
 # ============================================================
 # COLOR PALETTE - BioRender/Adobe Illustrator Professional Style
@@ -620,17 +621,34 @@ def generate_illustration():
 # ============================================================
 # MAIN EXECUTION
 # ============================================================
-if __name__ == '__main__':
+def main():
     output_dir = os.path.dirname(os.path.abspath(__file__))
     output_file = os.path.join(output_dir, 'biofloc_vannamei_illustration.svg')
-    
-    svg_content = generate_illustration()
-    
-    with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(svg_content)
-    
+
+    try:
+        svg_content = generate_illustration()
+    except Exception as exc:
+        print(f"[ERROR] Failed to generate illustration: {exc}", file=sys.stderr)
+        return 1
+
+    try:
+        with open(output_file, 'w', encoding='utf-8') as f:
+            f.write(svg_content)
+    except OSError as exc:
+        print(f"[ERROR] Failed to write '{output_file}': {exc}", file=sys.stderr)
+        return 1
+
     print(f"[SUCCESS] Illustration saved to: {output_file}")
-    print(f"[INFO] File size: {os.path.getsize(output_file) / 1024:.1f} KB")
+    try:
+        print(f"[INFO] File size: {os.path.getsize(output_file) / 1024:.1f} KB")
+    except OSError as exc:
+        print(f"[WARN] Could not determine file size for '{output_file}': {exc}",
+              file=sys.stderr)
     print(f"[INFO] Format: SVG (Scalable Vector Graphics)")
     print(f"[TIP] Open in browser or convert to PDF/EPS for journal submission.")
     print(f"[TIP] Use Inkscape or Adobe Illustrator to export as high-res PNG/TIFF if needed.")
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
