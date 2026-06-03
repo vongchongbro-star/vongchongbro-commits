@@ -14,6 +14,17 @@ Author: Generated with Kiro AI
 import math
 import os
 
+from svg_utils import (
+    arrow_marker,
+    arrow_path,
+    gradient_stop,
+    linear_gradient,
+    panel,
+    radial_gradient,
+    render_each,
+    svg_text,
+)
+
 # ============================================================
 # COLOR PALETTE - BioRender/Adobe Illustrator Professional Style
 # ============================================================
@@ -49,6 +60,33 @@ COLORS = {
 
 
 def svg_header(width, height):
+    gradients = "\n    ".join([
+        linear_gradient("waterGrad", [
+            gradient_stop("0%", COLORS['water'], 0.6),
+            gradient_stop("100%", COLORS['water_deep'], 0.9),
+        ]),
+        linear_gradient("tankGrad", [
+            gradient_stop("0%", "#34495E", 1),
+            gradient_stop("100%", "#2C3E50", 1),
+        ], x2="100%", y2="100%"),
+        radial_gradient("bioflocGrad1", [
+            gradient_stop("0%", "#C49A3C", 0.9),
+            gradient_stop("100%", COLORS['biofloc_1'], 1),
+        ], cx="40%", cy="40%"),
+        radial_gradient("bioflocGrad2", [
+            gradient_stop("0%", "#C0785A", 0.9),
+            gradient_stop("100%", COLORS['biofloc_2'], 1),
+        ], cx="40%", cy="40%"),
+        radial_gradient("bacteriaGrad", [
+            gradient_stop("0%", "#58D68D", 0.9),
+            gradient_stop("100%", COLORS['bacteria_1'], 1),
+        ], cx="40%", cy="40%"),
+        radial_gradient("shrimpGrad", [
+            gradient_stop("0%", COLORS['shrimp_light'], 1),
+            gradient_stop("60%", COLORS['shrimp_body'], 1),
+            gradient_stop("100%", COLORS['shrimp_dark'], 0.8),
+        ], cx="50%", cy="30%"),
+    ])
     return f'''<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" 
      xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -57,31 +95,7 @@ def svg_header(width, height):
      style="font-family: 'Helvetica Neue', Arial, sans-serif;">
 <defs>
     <!-- Gradients -->
-    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" style="stop-color:{COLORS['water']};stop-opacity:0.6"/>
-        <stop offset="100%" style="stop-color:{COLORS['water_deep']};stop-opacity:0.9"/>
-    </linearGradient>
-    <linearGradient id="tankGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#34495E;stop-opacity:1"/>
-        <stop offset="100%" style="stop-color:#2C3E50;stop-opacity:1"/>
-    </linearGradient>
-    <radialGradient id="bioflocGrad1" cx="40%" cy="40%">
-        <stop offset="0%" style="stop-color:#C49A3C;stop-opacity:0.9"/>
-        <stop offset="100%" style="stop-color:{COLORS['biofloc_1']};stop-opacity:1"/>
-    </radialGradient>
-    <radialGradient id="bioflocGrad2" cx="40%" cy="40%">
-        <stop offset="0%" style="stop-color:#C0785A;stop-opacity:0.9"/>
-        <stop offset="100%" style="stop-color:{COLORS['biofloc_2']};stop-opacity:1"/>
-    </radialGradient>
-    <radialGradient id="bacteriaGrad" cx="40%" cy="40%">
-        <stop offset="0%" style="stop-color:#58D68D;stop-opacity:0.9"/>
-        <stop offset="100%" style="stop-color:{COLORS['bacteria_1']};stop-opacity:1"/>
-    </radialGradient>
-    <radialGradient id="shrimpGrad" cx="50%" cy="30%">
-        <stop offset="0%" style="stop-color:{COLORS['shrimp_light']};stop-opacity:1"/>
-        <stop offset="60%" style="stop-color:{COLORS['shrimp_body']};stop-opacity:1"/>
-        <stop offset="100%" style="stop-color:{COLORS['shrimp_dark']};stop-opacity:0.8"/>
-    </radialGradient>
+    {gradients}
     <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
         <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
     </filter>
@@ -280,6 +294,43 @@ def draw_aerator(x, y):
 
 def draw_nitrogen_cycle(cx, cy, radius):
     """Draw the nitrogen transformation cycle diagram"""
+    nh3_label = svg_text(cx, cy - radius*0.6 - 3, "NH&#x2083;/NH&#x2084;&#x207A;",
+                         size=9, weight="bold", fill=COLORS['ammonia'],
+                         anchor="middle")
+    nh3_sub = svg_text(cx, cy - radius*0.6 + 9, "Ammonia", size=7,
+                       fill=COLORS['label_text'], anchor="middle")
+    no2_label = svg_text(cx + radius*0.55, cy + radius*0.3 - 3, "NO&#x2082;&#x207B;",
+                         size=9, weight="bold", fill=COLORS['nitrite'],
+                         anchor="middle")
+    no2_sub = svg_text(cx + radius*0.55, cy + radius*0.3 + 9, "Nitrite", size=7,
+                       fill=COLORS['label_text'], anchor="middle")
+    no3_label = svg_text(cx - radius*0.55, cy + radius*0.3 - 3, "NO&#x2083;&#x207B;",
+                         size=9, weight="bold", fill=COLORS['nitrate'],
+                         anchor="middle")
+    no3_sub = svg_text(cx - radius*0.55, cy + radius*0.3 + 9, "Nitrate", size=7,
+                       fill=COLORS['label_text'], anchor="middle")
+
+    nitrosomonas_arrow = arrow_path(
+        f"M {cx + 15},{cy - radius*0.6 + 15} C {cx + radius*0.4},{cy - radius*0.2} "
+        f"{cx + radius*0.5},{cy + radius*0.05} {cx + radius*0.5},{cy + radius*0.3 - 18}",
+        COLORS['nitrogen_arrow'])
+    nitrosomonas_label = svg_text(cx + radius*0.38, cy - radius*0.1, "Nitrosomonas",
+                                  size=6, style="italic", fill=COLORS['bacteria_1'],
+                                  anchor="middle")
+    nitrobacter_arrow = arrow_path(
+        f"M {cx + radius*0.55 - 20},{cy + radius*0.3 + 15} C {cx + radius*0.1},{cy + radius*0.55} "
+        f"{cx - radius*0.1},{cy + radius*0.55} {cx - radius*0.55 + 20},{cy + radius*0.3 + 15}",
+        COLORS['nitrogen_arrow'])
+    nitrobacter_label = svg_text(cx, cy + radius*0.55 + 5, "Nitrobacter",
+                                 size=6, style="italic", fill=COLORS['bacteria_1'],
+                                 anchor="middle")
+    assimilation_arrow = arrow_path(
+        f"M {cx - radius*0.55},{cy + radius*0.3 - 18} C {cx - radius*0.4},{cy - radius*0.15} "
+        f"{cx - radius*0.2},{cy - radius*0.4} {cx - 15},{cy - radius*0.6 + 15}",
+        COLORS['nitrogen_arrow'], dashed=True)
+    assimilation_label = svg_text(cx - radius*0.42, cy - radius*0.12, "Assimilation",
+                                  size=6, fill=COLORS['carbon'], anchor="middle")
+
     cycle = f'''
     <!-- NITROGEN CYCLE -->
     <g>
@@ -290,51 +341,36 @@ def draw_nitrogen_cycle(cx, cy, radius):
         <!-- NH3/NH4+ (Ammonia) - Top -->
         <g>
             <circle cx="{cx}" cy="{cy - radius*0.6}" r="22" fill="{COLORS['ammonia']}" opacity="0.15"/>
-            <text x="{cx}" y="{cy - radius*0.6 - 3}" text-anchor="middle" 
-                  font-size="9" font-weight="bold" fill="{COLORS['ammonia']}">NH&#x2083;/NH&#x2084;&#x207A;</text>
-            <text x="{cx}" y="{cy - radius*0.6 + 9}" text-anchor="middle" 
-                  font-size="7" fill="{COLORS['label_text']}">Ammonia</text>
+            {nh3_label}
+            {nh3_sub}
         </g>
         
         <!-- NO2- (Nitrite) - Right -->
         <g>
             <circle cx="{cx + radius*0.55}" cy="{cy + radius*0.3}" r="22" fill="{COLORS['nitrite']}" opacity="0.15"/>
-            <text x="{cx + radius*0.55}" y="{cy + radius*0.3 - 3}" text-anchor="middle" 
-                  font-size="9" font-weight="bold" fill="{COLORS['nitrite']}">NO&#x2082;&#x207B;</text>
-            <text x="{cx + radius*0.55}" y="{cy + radius*0.3 + 9}" text-anchor="middle" 
-                  font-size="7" fill="{COLORS['label_text']}">Nitrite</text>
+            {no2_label}
+            {no2_sub}
         </g>
         
         <!-- NO3- (Nitrate) - Left -->
         <g>
             <circle cx="{cx - radius*0.55}" cy="{cy + radius*0.3}" r="22" fill="{COLORS['nitrate']}" opacity="0.15"/>
-            <text x="{cx - radius*0.55}" y="{cy + radius*0.3 - 3}" text-anchor="middle" 
-                  font-size="9" font-weight="bold" fill="{COLORS['nitrate']}">NO&#x2083;&#x207B;</text>
-            <text x="{cx - radius*0.55}" y="{cy + radius*0.3 + 9}" text-anchor="middle" 
-                  font-size="7" fill="{COLORS['label_text']}">Nitrate</text>
+            {no3_label}
+            {no3_sub}
         </g>
         
         <!-- Arrows between nodes -->
         <!-- NH3 -> NO2 (Nitrosomonas) -->
-        <path d="M {cx + 15},{cy - radius*0.6 + 15} C {cx + radius*0.4},{cy - radius*0.2} {cx + radius*0.5},{cy + radius*0.05} {cx + radius*0.5},{cy + radius*0.3 - 18}" 
-              fill="none" stroke="{COLORS['nitrogen_arrow']}" stroke-width="2" 
-              marker-end="url(#arrowhead)"/>
-        <text x="{cx + radius*0.38}" y="{cy - radius*0.1}" text-anchor="middle" 
-              font-size="6" font-style="italic" fill="{COLORS['bacteria_1']}">Nitrosomonas</text>
+        {nitrosomonas_arrow}
+        {nitrosomonas_label}
         
         <!-- NO2 -> NO3 (Nitrobacter) -->
-        <path d="M {cx + radius*0.55 - 20},{cy + radius*0.3 + 15} C {cx + radius*0.1},{cy + radius*0.55} {cx - radius*0.1},{cy + radius*0.55} {cx - radius*0.55 + 20},{cy + radius*0.3 + 15}" 
-              fill="none" stroke="{COLORS['nitrogen_arrow']}" stroke-width="2" 
-              marker-end="url(#arrowhead)"/>
-        <text x="{cx}" y="{cy + radius*0.55 + 5}" text-anchor="middle" 
-              font-size="6" font-style="italic" fill="{COLORS['bacteria_1']}">Nitrobacter</text>
+        {nitrobacter_arrow}
+        {nitrobacter_label}
         
         <!-- NO3 -> Microbial protein (uptake) -->
-        <path d="M {cx - radius*0.55},{cy + radius*0.3 - 18} C {cx - radius*0.4},{cy - radius*0.15} {cx - radius*0.2},{cy - radius*0.4} {cx - 15},{cy - radius*0.6 + 15}" 
-              fill="none" stroke="{COLORS['nitrogen_arrow']}" stroke-width="2" stroke-dasharray="4,2"
-              marker-end="url(#arrowhead)"/>
-        <text x="{cx - radius*0.42}" y="{cy - radius*0.12}" text-anchor="middle" 
-              font-size="6" fill="{COLORS['carbon']}">Assimilation</text>
+        {assimilation_arrow}
+        {assimilation_label}
     </g>
     '''
     return cycle
@@ -342,25 +378,31 @@ def draw_nitrogen_cycle(cx, cy, radius):
 
 def draw_carbon_source(x, y):
     """Draw carbon source input indicator"""
+    title = svg_text(x, y-2, "Carbon", size=8, weight="bold",
+                     fill=COLORS['carbon'], anchor="middle")
+    subtitle = svg_text(x, y+9, "Source (C:N)", size=7, fill=COLORS['carbon'],
+                        anchor="middle")
     return f'''
     <!-- CARBON SOURCE -->
     <g>
         <rect x="{x-30}" y="{y-15}" width="60" height="30" rx="6" ry="6" 
               fill="{COLORS['carbon']}" opacity="0.15" stroke="{COLORS['carbon']}" stroke-width="1.5"/>
-        <text x="{x}" y="{y-2}" text-anchor="middle" font-size="8" font-weight="bold" fill="{COLORS['carbon']}">Carbon</text>
-        <text x="{x}" y="{y+9}" text-anchor="middle" font-size="7" fill="{COLORS['carbon']}">Source (C:N)</text>
+        {title}
+        {subtitle}
     </g>
     '''
 
 
 def draw_feed_input(x, y):
     """Draw feed input"""
+    label = svg_text(x, y-30, "FEED", size=6, weight="bold", fill="#5D4E37",
+                     anchor="middle")
     return f'''
     <!-- FEED INPUT -->
     <g>
         <path d="M {x},{y} L {x-12},{y-25} L {x+12},{y-25} Z" fill="#D4AC6E" stroke="#8B6914" stroke-width="1"/>
         <rect x="{x-12}" y="{y-40}" width="24" height="15" rx="3" ry="3" fill="#C49A3C" stroke="#8B6914" stroke-width="1"/>
-        <text x="{x}" y="{y-30}" text-anchor="middle" font-size="6" font-weight="bold" fill="#5D4E37">FEED</text>
+        {label}
         <!-- Feed pellets -->
         <circle cx="{x-3}" cy="{y-8}" r="2" fill="#D4AC6E"/>
         <circle cx="{x+4}" cy="{y-5}" r="1.8" fill="#C49A3C"/>
@@ -375,14 +417,13 @@ def draw_arrow_curved(x1, y1, x2, y2, color, label="", label_offset=(0,0)):
     cpx = (x1 + x2) / 2 + (y2 - y1) * 0.2
     cpy = (y1 + y2) / 2 - (x2 - x1) * 0.2
     arrow = f'''
-    <path d="M {x1},{y1} Q {cpx},{cpy} {x2},{y2}" 
-          fill="none" stroke="{color}" stroke-width="2" 
-          marker-end="url(#arrowhead)" opacity="0.8"/>
+    {arrow_path(f"M {x1},{y1} Q {cpx},{cpy} {x2},{y2}", color, opacity=0.8)}
     '''
     if label:
         lx = (x1 + x2) / 2 + label_offset[0]
         ly = (y1 + y2) / 2 + label_offset[1]
-        arrow += f'<text x="{lx}" y="{ly}" text-anchor="middle" font-size="7" fill="{color}" font-style="italic">{label}</text>'
+        arrow += svg_text(lx, ly, label, size=7, fill=color, anchor="middle",
+                          style="italic")
     return arrow
 
 
@@ -397,19 +438,20 @@ def draw_legend(x, y):
         (COLORS['aeration'], 'Aeration/O\u2082'),
         (COLORS['carbon'], 'Carbon source'),
     ]
+    header = panel(x, y, 150, len(items)*22 + 20, "LEGEND",
+                   title_fill=COLORS['label_text'], title_dy=16)
     legend = f'''
     <!-- LEGEND -->
     <g>
-        <rect x="{x}" y="{y}" width="150" height="{len(items)*22 + 20}" rx="8" ry="8" 
-              fill="white" stroke="#BDC3C7" stroke-width="1" opacity="0.95"/>
-        <text x="{x+75}" y="{y+16}" text-anchor="middle" font-size="9" 
-              font-weight="bold" fill="{COLORS['label_text']}">LEGEND</text>
+        {header}
     '''
     for i, (color, label) in enumerate(items):
         iy = y + 30 + i * 22
+        item_label = svg_text(x+34, iy+11, label, size=8,
+                              fill=COLORS['label_text'])
         legend += f'''
         <rect x="{x+12}" y="{iy}" width="14" height="14" rx="3" ry="3" fill="{color}" opacity="0.8"/>
-        <text x="{x+34}" y="{iy+11}" font-size="8" fill="{COLORS['label_text']}">{label}</text>
+        {item_label}
         '''
     legend += '</g>'
     return legend
@@ -417,36 +459,54 @@ def draw_legend(x, y):
 
 def draw_labels_and_annotations(tank_x, tank_y, tank_w, tank_h):
     """Draw all text labels and annotation lines"""
+    box_x = tank_x + tank_w/2 + 30
+    text_x = tank_x + tank_w/2 + 42
+
+    tank_label = svg_text(tank_x, tank_y - tank_h/2 - 15, "Biofloc Culture Tank",
+                          size=11, weight="bold", fill=COLORS['label_text'],
+                          anchor="middle")
+
+    water_panel = panel(box_x, tank_y - 60, 145, 100, "Water Quality",
+                        title_fill=COLORS['label_text'])
+    water_rows = [
+        (tank_y - 25, "pH: 7.0 - 8.0"),
+        (tank_y - 12, "DO: &gt; 5 mg/L"),
+        (tank_y + 1, "TAN: &lt; 1 mg/L"),
+        (tank_y + 14, "C:N ratio: 15-20:1"),
+        (tank_y + 27, "Floc vol: 10-15 mL/L"),
+    ]
+    water_text = "\n            ".join(
+        svg_text(text_x, ry, content, size=7.5, fill=COLORS['label_text'])
+        for ry, content in water_rows)
+
+    benefits_panel = panel(box_x, tank_y + 55, 145, 85, "Key Benefits",
+                          title_fill=COLORS['label_text'])
+    benefit_rows = [
+        (tank_y + 90, "&#x2022; Zero water exchange"),
+        (tank_y + 103, "&#x2022; In-situ bioremediation"),
+        (tank_y + 116, "&#x2022; Supplemental nutrition"),
+        (tank_y + 129, "&#x2022; Reduced FCR"),
+    ]
+    benefits_text = "\n            ".join(
+        svg_text(text_x, ry, content, size=7.5, fill=COLORS['label_text'])
+        for ry, content in benefit_rows)
+
     annotations = f'''
     <!-- ANNOTATIONS -->
     <g>
         <!-- Tank label -->
-        <text x="{tank_x}" y="{tank_y - tank_h/2 - 15}" text-anchor="middle" 
-              font-size="11" font-weight="bold" fill="{COLORS['label_text']}">Biofloc Culture Tank</text>
+        {tank_label}
         
         <!-- Water quality parameters box -->
         <g>
-            <rect x="{tank_x + tank_w/2 + 30}" y="{tank_y - 60}" width="145" height="100" rx="8" ry="8" 
-                  fill="white" stroke="#BDC3C7" stroke-width="1" opacity="0.95"/>
-            <text x="{tank_x + tank_w/2 + 102}" y="{tank_y - 42}" text-anchor="middle" 
-                  font-size="9" font-weight="bold" fill="{COLORS['label_text']}">Water Quality</text>
-            <text x="{tank_x + tank_w/2 + 42}" y="{tank_y - 25}" font-size="7.5" fill="{COLORS['label_text']}">pH: 7.0 - 8.0</text>
-            <text x="{tank_x + tank_w/2 + 42}" y="{tank_y - 12}" font-size="7.5" fill="{COLORS['label_text']}">DO: &gt; 5 mg/L</text>
-            <text x="{tank_x + tank_w/2 + 42}" y="{tank_y + 1}" font-size="7.5" fill="{COLORS['label_text']}">TAN: &lt; 1 mg/L</text>
-            <text x="{tank_x + tank_w/2 + 42}" y="{tank_y + 14}" font-size="7.5" fill="{COLORS['label_text']}">C:N ratio: 15-20:1</text>
-            <text x="{tank_x + tank_w/2 + 42}" y="{tank_y + 27}" font-size="7.5" fill="{COLORS['label_text']}">Floc vol: 10-15 mL/L</text>
+            {water_panel}
+            {water_text}
         </g>
         
         <!-- Benefits box -->
         <g>
-            <rect x="{tank_x + tank_w/2 + 30}" y="{tank_y + 55}" width="145" height="85" rx="8" ry="8" 
-                  fill="white" stroke="#BDC3C7" stroke-width="1" opacity="0.95"/>
-            <text x="{tank_x + tank_w/2 + 102}" y="{tank_y + 73}" text-anchor="middle" 
-                  font-size="9" font-weight="bold" fill="{COLORS['label_text']}">Key Benefits</text>
-            <text x="{tank_x + tank_w/2 + 42}" y="{tank_y + 90}" font-size="7.5" fill="{COLORS['label_text']}">&#x2022; Zero water exchange</text>
-            <text x="{tank_x + tank_w/2 + 42}" y="{tank_y + 103}" font-size="7.5" fill="{COLORS['label_text']}">&#x2022; In-situ bioremediation</text>
-            <text x="{tank_x + tank_w/2 + 42}" y="{tank_y + 116}" font-size="7.5" fill="{COLORS['label_text']}">&#x2022; Supplemental nutrition</text>
-            <text x="{tank_x + tank_w/2 + 42}" y="{tank_y + 129}" font-size="7.5" fill="{COLORS['label_text']}">&#x2022; Reduced FCR</text>
+            {benefits_panel}
+            {benefits_text}
         </g>
     </g>
     '''
@@ -455,29 +515,31 @@ def draw_labels_and_annotations(tank_x, tank_y, tank_w, tank_h):
 
 def draw_title(width):
     """Draw the main title and subtitle"""
+    title = svg_text(width / 2, 40, "Biofloc Technology (BFT) System",
+                     size=18, weight="bold", fill=COLORS['title_text'],
+                     anchor="middle", extra='letter-spacing="0.5"')
+    subtitle = svg_text(
+        width / 2, 60,
+        "for Litopenaeus vannamei (Pacific White Shrimp) Culture",
+        size=12, fill=COLORS['label_text'], anchor="middle", style="italic")
     return f'''
     <!-- TITLE -->
-    <text x="{width/2}" y="40" text-anchor="middle" font-size="18" font-weight="bold" 
-          fill="{COLORS['title_text']}" letter-spacing="0.5">Biofloc Technology (BFT) System</text>
-    <text x="{width/2}" y="60" text-anchor="middle" font-size="12" 
-          fill="{COLORS['label_text']}" font-style="italic">for Litopenaeus vannamei (Pacific White Shrimp) Culture</text>
+    {title}
+    {subtitle}
     '''
 
 
 def draw_process_arrows():
     """Draw process flow arrows showing the biofloc cycle"""
+    markers = "\n        ".join([
+        arrow_marker("arrowhead", COLORS['nitrogen_arrow']),
+        arrow_marker("arrowhead_red", COLORS['ammonia']),
+        arrow_marker("arrowhead_green", COLORS['nitrate']),
+    ])
     return f'''
     <!-- PROCESS FLOW ARROWS -->
     <defs>
-        <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="{COLORS['nitrogen_arrow']}"/>
-        </marker>
-        <marker id="arrowhead_red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="{COLORS['ammonia']}"/>
-        </marker>
-        <marker id="arrowhead_green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="{COLORS['nitrate']}"/>
-        </marker>
+        {markers}
     </defs>
     '''
 
@@ -537,8 +599,7 @@ def generate_illustration():
         (tank_cx + 100, tank_cy + 100, 11, 1),
         (tank_cx - 130, tank_cy + 130, 9, 2),
     ]
-    for bx, by, bs, bv in biofloc_positions:
-        svg_parts.append(draw_biofloc_particle(bx, by, bs, bv))
+    svg_parts.extend(render_each(draw_biofloc_particle, biofloc_positions))
     
     # Bacteria - scattered
     bacteria_positions = [
@@ -549,8 +610,7 @@ def generate_illustration():
         (tank_cx + 130, tank_cy + 120, 4, 1),
         (tank_cx - 140, tank_cy - 110, 3, 2),
     ]
-    for bx, by, bs, bt in bacteria_positions:
-        svg_parts.append(draw_bacteria(bx, by, bs, bt))
+    svg_parts.extend(render_each(draw_bacteria, bacteria_positions))
     
     # Microalgae
     algae_positions = [
@@ -560,8 +620,7 @@ def generate_illustration():
         (tank_cx + 90, tank_cy - 120, 3.5),
         (tank_cx - 100, tank_cy - 130, 4),
     ]
-    for ax, ay, az in algae_positions:
-        svg_parts.append(draw_microalgae(ax, ay, az))
+    svg_parts.extend(render_each(draw_microalgae, algae_positions))
     
     # Nitrogen cycle diagram (positioned to the upper-left area inside tank)
     svg_parts.append(draw_nitrogen_cycle(tank_cx - 140, tank_cy - 80, 70))
@@ -579,37 +638,52 @@ def generate_illustration():
     svg_parts.append(draw_legend(20, H - 170))
     
     # Process description at bottom
+    description = svg_text(
+        W/2, H - 20,
+        "Fig. 1. Schematic representation of Biofloc Technology (BFT) system for "
+        "Litopenaeus vannamei culture showing nitrogen cycling and microbial community.",
+        size=8, fill=COLORS['label_text'], anchor="middle")
     svg_parts.append(f'''
     <!-- PROCESS DESCRIPTION -->
-    <text x="{W/2}" y="{H - 20}" text-anchor="middle" font-size="8" fill="{COLORS['label_text']}">
-        Fig. 1. Schematic representation of Biofloc Technology (BFT) system for Litopenaeus vannamei culture showing nitrogen cycling and microbial community.
-    </text>
+    {description}
     ''')
     
     # Connection arrows (shrimp waste -> ammonia)
+    waste_arrow = arrow_path(
+        f"M {tank_cx - 80},{tank_cy + 30} C {tank_cx - 100},{tank_cy} "
+        f"{tank_cx - 120},{tank_cy - 20} {tank_cx - 140},{tank_cy - 40}",
+        COLORS['ammonia'], width=1.5, marker="arrowhead_red", dashed=True,
+        opacity=0.7)
+    excretion_label = svg_text(tank_cx - 125, tank_cy + 5, "Excretion", size=6,
+                               fill=COLORS['ammonia'], style="italic")
     svg_parts.append(f'''
     <!-- Waste arrow from shrimp to nitrogen cycle -->
-    <path d="M {tank_cx - 80},{tank_cy + 30} C {tank_cx - 100},{tank_cy} {tank_cx - 120},{tank_cy - 20} {tank_cx - 140},{tank_cy - 40}" 
-          fill="none" stroke="{COLORS['ammonia']}" stroke-width="1.5" stroke-dasharray="4,2"
-          marker-end="url(#arrowhead_red)" opacity="0.7"/>
-    <text x="{tank_cx - 125}" y="{tank_cy + 5}" font-size="6" fill="{COLORS['ammonia']}" font-style="italic">Excretion</text>
+    {waste_arrow}
+    {excretion_label}
     ''')
     
     # Arrow from biofloc to shrimp (food source)
+    food_arrow = arrow_path(
+        f"M {tank_cx + 80},{tank_cy + 25} C {tank_cx + 70},{tank_cy + 45} "
+        f"{tank_cx + 60},{tank_cy + 60} {tank_cx + 55},{tank_cy + 70}",
+        COLORS['nitrate'], width=1.5, marker="arrowhead_green", dashed=True,
+        opacity=0.7)
+    grazing_label = svg_text(tank_cx + 90, tank_cy + 55, "Grazing", size=6,
+                             fill=COLORS['nitrate'], style="italic")
     svg_parts.append(f'''
     <!-- Biofloc as food for shrimp -->
-    <path d="M {tank_cx + 80},{tank_cy + 25} C {tank_cx + 70},{tank_cy + 45} {tank_cx + 60},{tank_cy + 60} {tank_cx + 55},{tank_cy + 70}" 
-          fill="none" stroke="{COLORS['nitrate']}" stroke-width="1.5" stroke-dasharray="4,2"
-          marker-end="url(#arrowhead_green)" opacity="0.7"/>
-    <text x="{tank_cx + 90}" y="{tank_cy + 55}" font-size="6" fill="{COLORS['nitrate']}" font-style="italic">Grazing</text>
+    {food_arrow}
+    {grazing_label}
     ''')
     
     # Carbon source arrow into tank
+    carbon_arrow = arrow_path(
+        f"M {tank_cx + tank_w/2 + 70},{tank_cy + 165} "
+        f"L {tank_cx + tank_w/2 + 10},{tank_cy + 120}",
+        COLORS['carbon'], opacity=0.7)
     svg_parts.append(f'''
     <!-- Carbon source input arrow -->
-    <path d="M {tank_cx + tank_w/2 + 70},{tank_cy + 165} L {tank_cx + tank_w/2 + 10},{tank_cy + 120}" 
-          fill="none" stroke="{COLORS['carbon']}" stroke-width="2" 
-          marker-end="url(#arrowhead)" opacity="0.7"/>
+    {carbon_arrow}
     ''')
     
     svg_parts.append(svg_footer())
